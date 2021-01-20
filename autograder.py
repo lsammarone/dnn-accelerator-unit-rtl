@@ -82,7 +82,7 @@ def test_conv_gold_tiled_test():
     if (verbose):
         print(process.stdout)
 
-    if "***ERROR***" in process.stdout:
+    if "Error! Output does not match gold" in process.stdout:
         print(CRED + "Test failed\n" + CEND)
         return 0
     else:
@@ -145,6 +145,10 @@ def test_accumulation_buffer_tb():
     print("Running test_accumulation_buffer_tb")
     return run_process(['vcs', '-full64', '-sverilog', '-timescale=1ns/1ps', '-debug_access+pp', 'tests/accumulation_buffer_tb.v', 'verilog/accumulation_buffer.v', 'verilog/ram_sync_1r1w.v'])
 
+
+# def test_conv_tb():
+#     print("Running test_conv_tb")
+#     return run_process(['vcs', '-full64', '-sverilog', '-timescale=1ns/1ps', '-debug_access+pp', 'tests/conv_tb.v', 'verilog/conv.v', 'verilog/systolic_array_with_skew.v', 'verilog/skew_registers.v', 'verilog/systolic_array.v', 'verilog/mac.v', 'verilog/adr_gen_sequential.v', 'verilog/deaggregator.v', 'verilog/aggregator.v', 'verilog/fifo.v', 'verilog/SizedFIFO.v', 'verilog/conv_controller.v', 'verilog/accumulation_buffer.v', 'verilog/ram_sync_1r1w.v', 'verilog/ifmap_radr_gen.v', 'verilog/double_buffer.v'])
 
 args = sys.argv
 args_len = len(sys.argv)

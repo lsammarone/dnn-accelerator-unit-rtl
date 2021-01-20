@@ -1,3 +1,4 @@
+
 generate_layer: cpp/conv_gold.cpp cpp/conv_gold_tiled.cpp cpp/conv_tb.cpp
 	g++ -g -std=c++11 cpp/conv_tb.cpp -o conv_tb
 	./conv_tb
@@ -23,12 +24,13 @@ compile_c: cpp/conv_gold.cpp cpp/conv_gold_test.cpp
 run_tiled_c: compile_tiled_c
 	./conv_gold_tiled
 
-compile_tiled_c: cpp/conv_gold_tiled.cpp cpp/conv_tb.cpp
-	g++ -g -std=c++11 cpp/conv_tb.cpp -o conv_gold_tiled
+compile_tiled_c: cpp/conv_gold_tiled.cpp cpp/conv_gold_tiled_test.cpp
+	g++ -g -std=c++11 cpp/conv_gold_tiled_test.cpp -o conv_gold_tiled
+	
 	
 clean:
 	rm -rf ./conv_gold
-	rm -rf ./conv_tb
+	rm -rf ./conv_gold_tiled
 	rm -rf ./simv
 	rm -rf simv.daidir/ 
 	rm -rf *.vcd
