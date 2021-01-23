@@ -3,9 +3,8 @@
 * Verilog source files are in `verilog` directory.
 * Unit tests for all modules are in `tests` directory.
 * `autograder.py` has the commands to run each test. 
-* Before running tests you need to be in bash and load the following modules:
+* Before running tests you need to load the following modules:
 ```
-bash
 module load base
 module load vcs
 ```
