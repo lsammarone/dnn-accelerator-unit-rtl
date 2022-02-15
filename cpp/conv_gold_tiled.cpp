@@ -24,5 +24,42 @@ void conv_gold_tiled(
  
   // Your code starts here
   // hello
+  int OY_total = OY1*OY0;
+int OX_total = OX1*OX0;
+int OC_total = OC1*OC0;
+
+for (int i = 0; i < OY_total; i++) {
+    for (int j = 0; j < OX_total; j++) {
+      for (int k = 0; k < OC_total; k++) {
+        ofmap[i][j][k] = 0;
+      }
+    }
+  }
+
+for (int oy1=0; oy1<OY1; oy1++){
+  for (int ox1=0; ox1<OX1; ox1++){
+    for (int oc1=0; oc1<OC1; oc1++){
+      for (int ic1=0; ic1<IC1; ic1++){
+        for (int fy=0; fy<FY; fy++){
+          for (int fx=0; fx<FX; fx++){
+            for (int oy0=0; oy0<OY0; oy0++){
+              for (int ox0=0; ox0<OX0; ox0++){
+                for (int oc0=0; oc0<OC0; oc0++){
+                  int oy = oy1*OY0 + oy0;
+                  int ox = ox1*OX0 + ox0;
+                  int oc = oc1*OC0 + oc0;
+                  for (int ic0=0; ic0<IC0; ic0++){
+                    int ic = ic1*IC0 + ic0;
+                    ofmap[oy][ox][oc] += ifmap[STRIDE*oy+fy][STRIDE*ox+fx][ic] * weights[fy][fx][ic][oc];             
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
   // Your code ends here
 }
